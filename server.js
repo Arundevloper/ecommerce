@@ -7,45 +7,48 @@ import productRoutes from "./routes/productRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import path from "path";
 import { fileURLToPath } from 'url';
-const directoryName = path.dirname(filePath);
 
-//configure env
-dotenv.config();
-
+// Obtain the file path of the current module
 const filePath = fileURLToPath(import.meta.url);
 
-//databse config
+// Get the directory name from the file path
+const directoryName = path.dirname(filePath);
+
+// Configure environment variables from .env file in the current directory
+dotenv.config({ path: path.join(directoryName, '.env') });
+
+// Database configuration
 connectDB();
 
-//rest object
+// Create an Express application instance
 const app = express();
 
-//middelwares
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname,'./client/build')));
 
-//rest api
-app.use('*',(req,res)=>{
-res.sendFile(path.join(__dirname,'/client/build/index.html'));
-})
+// REST API route to serve index.html for client-side routing
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname,'/client/build/index.html'));
+});
+
+// Basic route
 app.get("/", (req, res) => {
   res.send("<h1>Welcome to ecommerce app</h1>");
 });
 
-//routes.
+// Routes
 app.use("/api/v1/product/", productRoutes);
 app.use("/api/v1/auth/", authRoutes);
 app.use("/api/v1/category/", categoryRoutes);
 
-
-//Port
+// Port
 const PORT = process.env.PORT || 5000;
 
-//run listen
+// Start the server
 app.listen(PORT, () => {
   console.log(
-    `Server Running on ${process.env.DEV_MODE} mode on port ${PORT}`.bgCyan
-      .white
+    `Server Running on ${process.env.DEV_MODE} mode on port ${PORT}`.bgCyan.white
   );
 });

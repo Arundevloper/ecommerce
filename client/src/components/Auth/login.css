@@ -1,0 +1,63 @@
+.outerDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  border-color: #eeeeee !important;
+  background-color:#EEEEEE ;
+}
+
+.innerDiv {
+  margin-top:10px;
+  margin-bottom: 10px;
+  background-color: white;
+  height: 80%;
+  padding: 60px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px; /* Add margin between input boxes */
+ 
+}
+.form-group label{
+  color:#457B9D;
+  font-weight: 600 !important;
+}
+
+.form-control {
+  font-size: 16px !important;
+   border-color: #457B9D !important;
+   border: 1px solid;
+}
+
+.login-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-label label {
+  font-size: 30px !important;
+  color: #457B9D;
+  font-weight: 600 !important
+}
+
+.submitButon {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .outerDiv {
+    align-items: flex-start;
+    height: auto !important;
+    background-color: white !important;
+  }
+
+  .innerDiv {
+    padding: 20px !important;
+    width: 100% !important; /* Set width to 100% for mobile screens */
+    box-shadow: none !important;
+  }
+}

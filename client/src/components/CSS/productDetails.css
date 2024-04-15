@@ -1,0 +1,50 @@
+.products  {
+  display: flex !important;
+  justify-content: center !important;
+}
+.products h1 {
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
+.pdetails h1 {
+  font-size: 20px !important;
+  color: #457b9d;
+}
+.pdetails p {
+  color: #1d3557;
+}
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.spinner-grow {
+  margin-left: 5px !important;
+}
+.pimage {
+ 
+  border-radius: 8px;
+  padding: 8px;
+
+}
+.similar  {
+  display: flex !important;
+  justify-content: center !important;
+}
+.similar h1 {
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
+.desc{
+    font-size: 18px !important;
+  font-weight: 600 !important;
+}
+.desc-price{
+  font-size: 18px !important;
+  font-weight: 400 !important;
+
+}

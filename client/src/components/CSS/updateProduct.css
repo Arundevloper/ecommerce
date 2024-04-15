@@ -1,0 +1,7 @@
+.labels{
+    display: flex;
+    justify-content:center;
+}
+.labels h2{
+    margin-right:20px;
+}

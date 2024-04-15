@@ -1,0 +1,29 @@
+.container h2{
+    font-size:20px !important;
+    font-weight: bold !important;
+    color:#457b9d;
+}
+.pName h5{
+    color:#457b9d;
+    font-size: 20 !important;
+
+}
+.yourCart{
+    display: flex;
+    justify-content: center;
+}
+.userName{
+    color:#1d3557;
+    font-weight: bold !important;
+    font-size: 20px !important;
+}
+.total{
+    font-weight: 600 !important;
+}
+.total h5{
+    font-weight: 600 !important;
+}
+.cancel{
+    display: flex;
+    justify-content: space-between;
+}

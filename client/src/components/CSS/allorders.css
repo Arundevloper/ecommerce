@@ -1,0 +1,19 @@
+.product-name{
+    color:#457b9d ;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+}
+.product-description{
+     font-weight: 600 !important;
+}
+.product-price{
+font-weight: 600 !important;
+}
+.product-status{
+color:#457b9d;
+font-weight: 600 !important;
+}
+.product-orderd{
+font-weight: 600 !important;
+color: #457b9d;
+}

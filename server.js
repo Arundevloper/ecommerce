@@ -6,9 +6,13 @@ import authRoutes from "./routes/authRoute.js";
 import productRoutes from "./routes/productRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import path from "path";
+import { fileURLToPath } from 'url';
+const directoryName = path.dirname(filePath);
 
 //configure env
 dotenv.config();
+
+const filePath = fileURLToPath(import.meta.url);
 
 //databse config
 connectDB();

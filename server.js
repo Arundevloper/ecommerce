@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, './client/build')));
 
 
 // REST API route to serve index.html for client-side routing
-app.use('*', function (req, res) => {
+app.use('*', function (req, res){
   res.sendFile(path.join(__dirname,'./client/build/index.html'));
 });
 

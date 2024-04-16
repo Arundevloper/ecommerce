@@ -15,24 +15,28 @@ function CartPages() {
 
   const removeCartItem = (productId) => {
     const updatedCart = cart.filter((item) => item._id !== productId);
-   
-    if(updatedCart){
+
+    if (updatedCart) {
       toast.success("Product Removed");
       setCart(updatedCart);
       localStorage.setItem("cart", JSON.stringify(updatedCart));
-    }
-    else{
-        toast.error("Some Error Occurrd");
+    } else {
+      toast.error("Some Error Occurrd");
     }
   };
 
-let totalAmount = 0;
-
-if (cart && Array.isArray(cart.items)) {
-  for (const product of cart.items) {
-    totalAmount += product.price;
-  }
-}
+  //total price
+  const totalPrice = () => {
+    try {
+      let total = 0;
+      cart?.map((item) => {
+        total = total + item.price;
+      });
+      return total;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const saveOrder = async (cart, userId) => {
     try {
@@ -47,12 +51,10 @@ if (cart && Array.isArray(cart.items)) {
     }
   };
 
-
   // Usage example:
   const proceedToCheckout = async () => {
-    if (auth.length=== "") {
+    if (auth.length === "") {
       return toast.error("Please login first to order.");
-   
     }
 
     if (cart.length === 0) {
@@ -62,10 +64,10 @@ if (cart && Array.isArray(cart.items)) {
 
     const authData = JSON.parse(localStorage.getItem("auth"));
     const userId = authData && authData.user && authData.user._id;
-    console.log("uerID"+userId);
+    console.log("uerID" + userId);
     setLoading(true);
     try {
-      await saveOrder(cart,userId);
+      await saveOrder(cart, userId);
       setLoading(false);
       toast.success("Order made successfully");
       setCart([]);
@@ -148,7 +150,7 @@ if (cart && Array.isArray(cart.items)) {
             <div className="sticky-top">
               <div className="yourCart">
                 <h5 className="mb-4 total">Total Amount:</h5>
-                <h5 className="total">₹{totalAmount}</h5>
+                <h5 className="total">₹{totalPrice()}</h5>
                 <button
                   className="btn btn-outline-success mt-5"
                   onClick={proceedToCheckout}

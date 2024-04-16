@@ -8,17 +8,17 @@ import categoryRoutes from "./routes/categoryRoutes.js";
 import path from "path";
 import { fileURLToPath } from 'url';
 
-// Obtain the file path of the current module
-const filePath = fileURLToPath(import.meta.url);
 
-// Get the directory name from the file path
-const directoryName = path.dirname(filePath);
 
 // Configure environment variables from .env file in the current directory
-dotenv.config({ path: path.join(directoryName, '.env') });
+dotenv.config();
 
 // Database configuration
 connectDB();
+
+// esmodule
+const __filename = fileURLToPath(import.meta.url);
+const __dirname=path.dirname(__filename);
 
 // Create an Express application instance
 const app = express();

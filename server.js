@@ -26,7 +26,8 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname,'./client/build')));
+app.use(express.static(path.join(__dirname, './client/build')));
+
 
 // REST API route to serve index.html for client-side routing
 app.use('*', (req, res) => {

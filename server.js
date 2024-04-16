@@ -29,6 +29,13 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'client', 'build', 'index.html'));
   
 });
+
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', "default-src 'self'");
+  next();
+});
+
+
 //rest api
 app.get("/", (req, res) => {
   res.send("<h1>Welcome to ecommerce app</h1>");

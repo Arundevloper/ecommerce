@@ -5,54 +5,48 @@ import cors from "cors";
 import authRoutes from "./routes/authRoute.js";
 import productRoutes from "./routes/productRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
-import morgan from "morgan";
 import path from "path";
 
-import { fileURLToPath } from 'url';
-
-
-
-// Configure environment variables from .env file in the current directory
+//configure env
 dotenv.config();
 
-// Database configuration
+//databse config
 connectDB();
 
-// esmodule
-const __filename = fileURLToPath(import.meta.url);
-const __dirname=path.dirname(__filename);
-
-// Create an Express application instance
+//rest object
 const app = express();
 
-// Middleware
+//middelwares
 app.use(cors());
 app.use(express.json());
-app.use(morgan("dev"));
-app.use(express.static(path.join(__dirname, './client/build')));
 
 
-// REST API route to serve index.html for client-side routing
-app.use('*', function (req, res){
-  res.sendFile(path.join(__dirname,'./client/build/index.html'));
+// Serve static files from the build folder
+app.use(express.static(path.join(process.cwd(), 'client', 'build')));
+
+// Handle requests to the root URL
+app.get('/', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'client', 'build', 'index.html'));
+  
 });
-
-// Basic route
+//rest api
 app.get("/", (req, res) => {
   res.send("<h1>Welcome to ecommerce app</h1>");
 });
 
-// Routes
+//routes.
 app.use("/api/v1/product/", productRoutes);
 app.use("/api/v1/auth/", authRoutes);
 app.use("/api/v1/category/", categoryRoutes);
 
-// Port
+
+//Port
 const PORT = process.env.PORT || 5000;
 
-// Start the server
+//run listen
 app.listen(PORT, () => {
   console.log(
-    `Server Running on ${process.env.DEV_MODE} mode on port ${PORT}`.bgCyan.white
+    `Server Running on ${process.env.DEV_MODE} mode on port ${PORT}`.bgCyan
+      .white
   );
 });

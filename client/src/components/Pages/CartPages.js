@@ -29,9 +29,12 @@ function CartPages() {
   const totalPrice = () => {
     try {
       let total = 0;
-      cart?.map((item) => {
-        total = total + item.price;
-      });
+      if (cart) {
+        for (let i = 0; i < cart.length; i++) {
+          const item = cart[i];
+          total = total + item.price;
+        }
+      }
       return total;
     } catch (error) {
       console.log(error);

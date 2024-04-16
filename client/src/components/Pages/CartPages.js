@@ -26,10 +26,13 @@ function CartPages() {
     }
   };
 
-const totalAmount = cart && Array.isArray(cart.items)
-  ? cart.items.reduce((total, product) => total + product.price, 0)
-  : 0;
+let totalAmount = 0;
 
+if (cart && Array.isArray(cart.items)) {
+  for (const product of cart.items) {
+    totalAmount += product.price;
+  }
+}
 
   const saveOrder = async (cart, userId) => {
     try {

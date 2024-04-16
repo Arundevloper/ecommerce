@@ -49,11 +49,6 @@ app.use("/api/v1/category/", categoryRoutes);
 //Port
 const PORT = process.env.PORT || 5000;
 
-connectDB().then(() => {
-    app.listen(PORT, () => {
-        console.log("listening for requests");
-    })
-})
 
 //run listen
 connectDB().then(()=>{

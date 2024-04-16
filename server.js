@@ -10,8 +10,7 @@ import path from "path";
 //configure env
 dotenv.config();
 
-//databse config
-connectDB();
+
 
 //rest object
 const app = express();
@@ -50,10 +49,19 @@ app.use("/api/v1/category/", categoryRoutes);
 //Port
 const PORT = process.env.PORT || 5000;
 
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log("listening for requests");
+    })
+})
+
 //run listen
-app.listen(PORT, () => {
+connectDB().then(()=>{
+  app.listen(PORT, () => {
   console.log(
     `Server Running on ${process.env.DEV_MODE} mode on port ${PORT}`.bgCyan
       .white
   );
 });
+})
+

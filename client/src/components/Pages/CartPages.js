@@ -26,7 +26,9 @@ function CartPages() {
     }
   };
 
-  const totalAmount = cart.reduce((total, product) => total + product.price, 0);
+  const totalAmount = Array.isArray(cart)
+  ? cart.reduce((total, product) => total + product.price, 0)
+  : 0;
 
   const saveOrder = async (cart, userId) => {
     try {

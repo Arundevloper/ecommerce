@@ -5,7 +5,9 @@ import cors from "cors";
 import authRoutes from "./routes/authRoute.js";
 import productRoutes from "./routes/productRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
+import morgan from "morgan";
 import path from "path";
+
 import { fileURLToPath } from 'url';
 
 
@@ -26,12 +28,13 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, './client/build')));
 
 
 // REST API route to serve index.html for client-side routing
-app.all('*', (req, res) => {
-  res.sendFile(path.join(__dirname,'/client/build/index.html'));
+app.use('*', function (req, res) => {
+  res.sendFile(path.join(__dirname,'./client/build/index.html'));
 });
 
 // Basic route
